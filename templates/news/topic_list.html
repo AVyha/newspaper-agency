@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <div class="content-details">
@@ -7,7 +8,12 @@
       <a href="{% url 'news:topic-create' %}" class="float-right btn btn-primary">
         Create new
       </a>
+
     </h1>
+      <form action="" method="get" class="form-inline">
+        {{ search_form|crispy }}
+        <input type="submit" value="search" class="btn-primary">
+      </form>
     {% if topic_list %}
       <table class="table table-striped table-bordered table-hover">
         <thead>
