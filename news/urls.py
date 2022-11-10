@@ -8,6 +8,7 @@ urlpatterns = [
     path("topic/create/", TopicCreateView.as_view(), name="topic-create"),
     path("topic/update/<int:pk>/", TopicUpdateView.as_view(), name="topic-update"),
     path("topic/delete/<int:pk>/", TopicDeleteView.as_view(), name="topic-delete"),
+    path("topic/detail/<int:pk>/", TopicDetailView.as_view(), name="topic-detail"),
     path("redactors/", RedactorListView.as_view(), name="redactor-list"),
     path("redactor/create/", RedactorCreateView.as_view(), name="redactor-create"),
     path("redactor/update/<int:pk>/", RedactorUpdateView.as_view(), name="redactor-update"),

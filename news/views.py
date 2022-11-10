@@ -55,6 +55,10 @@ class TopicDeleteView(generic.DeleteView):
     success_url = reverse_lazy("news:topic-list")
 
 
+class TopicDetailView(generic.DetailView):
+    model = Topic
+
+
 # Redactor CRUD
 class RedactorListView(generic.ListView):
     model = Redactor
