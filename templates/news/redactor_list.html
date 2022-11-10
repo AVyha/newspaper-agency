@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Redactor list</h1>
+  {% if redactor_list %}
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Newspaper</th>
+        <th></th>
+      </tr>
+      {% for redactor in redactor_list %}
+        <tr>
+          <td>{{ redactor.username }}</td>
+          <td>{{ redactor.first_name }}</td>
+          <td>{{ redactor.last_name }}</td>
+          <td>{{ redactor.newspapers.name }}</td>
+          <td><a href="{% url 'news:redactor-detail' pk=redactor.id %}">See more information</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>We don't have redactors</p>
+  {% endif %}
+{% endblock %}
