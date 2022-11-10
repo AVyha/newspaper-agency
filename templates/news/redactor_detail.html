@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a href="{% url 'news:redactor-update' pk=redactor.id %}"><button type="button">Update information</button></a>
+  <a href="{% url 'news:redactor-delete' pk=redactor.id %}"><button type="button">Delete user</button></a>
+  <p>username - {{ redactor.username }}</p>
+  <p>first name - {{ redactor.first_name }}</p>
+  <p>last name - {{ redactor.last_name }}</p>
+  <p>email - {{ redactor.email }}</p>
+
+{% endblock %}
