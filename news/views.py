@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from news.models import Topic, Redactor
+from news.models import Topic, Redactor, Newspaper
 
 
 def index(request):
@@ -56,3 +56,29 @@ class RedactorDeleteView(generic.DeleteView):
 
 class RedactorDetailView(generic.DetailView):
     model = Redactor
+
+
+# Newspapers CRUD
+class NewspapersListView(generic.ListView):
+    model = Newspaper
+
+
+class NewspapersCreateView(generic.CreateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("news:newspaper-list")
+
+
+class NewspaperUpdateView(generic.UpdateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("news:newspaper-list")
+
+
+class NewspaperDeleteView(generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("news:newspaper-list")
+
+
+class NewspaperDetailView(generic.DetailView):
+    model = Newspaper

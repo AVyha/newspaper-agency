@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a href="{% url 'news:newspaper-update' pk=newspaper.id %}"><button type="button">Update information</button></a>
+  <a href="{% url 'news:newspaper-delete' pk=newspaper.id %}"><button type="button">Delete newspaper</button></a>
+  <p>title - {{ newspaper.title }}</p>
+  <p>content - {{ newspaper.content }}</p>
+  <p>published_date - {{ newspaper.published_date }}</p>
+  <p>topic - {{ newspaper.topic }}</p>
+  {% if newspaper.publishers %}
+    {% for publisher in newspaper.publishers.all %}
+      <p><a href="{% url 'news:redactor-detail' pk=publisher.id %}">{{ publisher.username }}</a></p>
+    {% endfor %}
+
+  {% endif %}
+
+{% endblock %}

@@ -12,7 +12,12 @@ urlpatterns = [
     path("redactor/create/", RedactorCreateView.as_view(), name="redactor-create"),
     path("redactor/update/<int:pk>/", RedactorUpdateView.as_view(), name="redactor-update"),
     path("redactor/delete/<int:pk>/", RedactorDeleteView.as_view(), name="redactor-delete"),
-    path("redactor/info/<int:pk>/", RedactorDetailView.as_view(), name="redactor-detail")
+    path("redactor/info/<int:pk>/", RedactorDetailView.as_view(), name="redactor-detail"),
+    path("newspapers/", NewspapersListView.as_view(), name="newspaper-list"),
+    path("newspaper/create/", NewspapersCreateView.as_view(), name="newspaper-create"),
+    path("newspaper/update/<int:pk>/", NewspaperUpdateView.as_view(), name="newspaper-update"),
+    path("newspaper/detail/<int:pk>/", NewspaperDetailView.as_view(), name="newspaper-detail"),
+    path("newspaper/delete/<int:pk>/", NewspaperDeleteView.as_view(), name="newspaper-delete")
 ]
 
 app_name = "news"
