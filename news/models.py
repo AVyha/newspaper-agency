@@ -7,6 +7,9 @@ class Topic(models.Model):
         max_length=255
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Newspaper(models.Model):
     title = models.CharField(
@@ -30,8 +33,12 @@ class Newspaper(models.Model):
         related_name="newspapers"
     )
 
+    def __str__(self):
+        return self.title
+
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField()
-
-
+    years_of_experience = models.IntegerField(
+        null=True,
+        blank=True
+    )
