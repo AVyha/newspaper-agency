@@ -31,3 +31,12 @@ body {
 .content-details {
     margin: 20px;
 }
+
+.page-item {
+     text-align: center;
+}
+
+.next-page {
+    padding-right: 23px;
+    padding-left: 23px;
+}

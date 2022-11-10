@@ -1,0 +1,20 @@
+{% load query_transform %}
+{% if is_paginated %}
+
+  <div style="text-align: center">
+    {% if page_obj.has_previous %}
+        <a href="?{% query_transform request page=page_obj.previous_page_number %}" class="btn btn-primary">Previous</a>
+    {% else %}
+        <a href="" class="btn btn-secondary">Previous</a>
+    {% endif %}
+      <span class="btn btn-dark">
+        {{ page_obj.number }} of {{ paginator.num_pages }}
+      </span>
+    {% if page_obj.has_next %}
+        <a href="?{% query_transform request page=page_obj.next_page_number %}" class="btn btn-primary next-page">Next</a>
+    {% else %}
+        <a href="" class="btn btn-secondary next-page">Next</a>
+    {% endif %}
+  </div>
+
+{% endif %}
