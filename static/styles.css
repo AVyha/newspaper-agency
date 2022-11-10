@@ -40,3 +40,7 @@ body {
     padding-right: 23px;
     padding-left: 23px;
 }
+
+.btn {
+    margin: 10px;
+}

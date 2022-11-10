@@ -2,6 +2,15 @@
 
 {% block content %}
   <div class="content-details">
-    Hello world!
+    <h2>Good day</h2>
+    <p>You can find many interesting newspapers articles on this site.
+      You can view newspapers articles only on the topic you are interested in or watch the latest news.</p>
+
+  <ul>
+    <li><strong>Topics:</strong> {{ num_topics }}</li>
+    <li><strong>Redactors:</strong> {{ num_redactors }}</li>
+    <li><strong>Newspapers:</strong> {{ num_newspaper }}</li>
+  </ul>
+
   </div>
 {% endblock %}

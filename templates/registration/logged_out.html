@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <form action="" method="post">
-  {% csrf_token %}
-    <input type="submit">
-  </form>
-  <p>Logged out</p>
+  <div class="content-details" style="text-align: center">
+    <p>Bye, see you later</p>
 
-  <a href="{%  url 'login' %}">Click here to login again</a>
+    <a href="{%  url 'login' %}">Click here to login again</a>
+  </div>
 {% endblock %}
