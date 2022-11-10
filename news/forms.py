@@ -29,7 +29,8 @@ class RedactorCreateForm(UserCreationForm):
             "first_name",
             "last_name",
             "years_of_experience",
-            "workplace"
+            "workplace",
+            "email"
         )
 
 
