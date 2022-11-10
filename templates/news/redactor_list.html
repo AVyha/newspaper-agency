@@ -12,7 +12,8 @@
             <th scope="col">Username</th>
             <th scope="col">First name</th>
             <th scope="col">Last name</th>
-            <th scope="col">Newspaper</th>
+            <th scope="col">Years of experience</th>
+            <th scope="col">Newspapers count</th>
           </tr>
         </thead>
         <tbody>
@@ -21,7 +22,8 @@
               <td>{{ redactor.username }}</td>
               <td>{{ redactor.first_name }}</td>
               <td>{{ redactor.last_name }}</td>
-              <td>{{ redactor.newspapers.name }}</td>
+              <td>{{ redactor.years_of_experience }}</td>
+              <td>{{ redactor.newspapers.all.count }}</td>
               <td><a href="{% url 'news:redactor-detail' pk=redactor.id %}">See more information</a></td>
             </tr>
           {% endfor %}

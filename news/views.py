@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from news.forms import NewspaperSearchForm, TopicSearchForm
+from news.forms import NewspaperSearchForm, TopicSearchForm, RedactorCreateForm
 from news.models import Topic, Redactor, Newspaper
 
 
@@ -67,13 +67,13 @@ class RedactorListView(generic.ListView):
 class RedactorCreateView(generic.CreateView):
     model = Redactor
     success_url = reverse_lazy("news:index")
-    fields = "__all__"
+    form_class = RedactorCreateForm
 
 
 class RedactorUpdateView(generic.UpdateView):
     model = Redactor
     success_url = reverse_lazy("news:redactor-list")
-    fields = "__all__"
+    form_class = RedactorCreateForm
 
 
 class RedactorDeleteView(generic.DeleteView):
