@@ -4,7 +4,7 @@
   <div class="content-details">
 
     <h2>Newspapers with {{ topic.name }} topic</h2>
-    {% if topic.newspaper.all %}
+    {% if topic.newspaper.all.count %}
       {% for newspaper in topic.newspaper.all %}
         <li>
           {{ newspaper.title }} -
@@ -12,9 +12,6 @@
             More information about this...
         </a>
         </li>
-
-
-
       {% endfor %}
 
     {% else %}

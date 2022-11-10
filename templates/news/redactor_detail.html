@@ -8,5 +8,15 @@
     <p>first name - {{ redactor.first_name }}</p>
     <p>last name - {{ redactor.last_name }}</p>
     <p>email - {{ redactor.email }}</p>
+    {% if redactor.newspapers.all.count %}
+          {% for newspaper in redactor.newspapers.all %}
+        <li>
+          {{ newspaper.title }} -
+          <a href="{% url 'news:newspaper-detail' pk=newspaper.id %}">
+            More information about this...
+        </a>
+        </li>
+      {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}
