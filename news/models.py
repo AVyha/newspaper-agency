@@ -45,6 +45,11 @@ class Redactor(AbstractUser):
         null=True,
         blank=True
     )
+    workplace = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         ordering = ["years_of_experience"]
