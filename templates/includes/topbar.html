@@ -1,0 +1,14 @@
+<div class="topnav">
+  <a href="{% url 'news:index' %}" class="nav-element">Home</a>
+  <a href="{% url 'news:topic-list' %}" class="nav-element">Topics</a>
+  <a href="{% url 'news:redactor-list' %}" class="nav-element">Redactors</a>
+  <a href="{% url 'news:newspaper-list' %}" class="nav-element">Newspapers</a>
+  {% if user.is_authenticated  %}
+    <a href="{% url 'news:redactor-detail' pk=user.id %}" class="nav-element">My profile</a>
+    <a href="{% url 'logout' %}" class="nav-element">Logout</a>
+  {% else %}
+     <a href="{% url 'news:redactor-create' %}" class="nav-element">sign up</a>
+    <a href="{% url 'login' %}" class="nav-element">log in</a>
+  {% endif %} 
+
+</div>

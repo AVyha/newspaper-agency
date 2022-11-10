@@ -1,24 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Topic list</h1>
-  <a href="{% url 'news:topic-create' %}"><button type="button">Create new topic</button></a>
-  {% if topic_list %}
-    <table>
-      <tr>
-        <th>Name</th>
-        <th></th>
-        <th></th>
-      </tr>
-    {% for topic in topic_list %}
-      <tr>
-        <td>{{ topic.name }}</td>
-        <td><a href="{% url 'news:topic-update' pk=topic.id %}">Update</a></td>
-        <td><a href="{% url 'news:topic-delete' pk=topic.id %}">Delete</a></td>
-      </tr>
-    {% endfor %}
-    </table>
-  {% else %}
-    <p>Now we don't have topic</p>
-  {% endif %}
+  <div class="content-details">
+    <h1 style="text-align: center;">
+      Topic list
+      <a href="{% url 'news:topic-create' %}" class="float-right btn btn-primary">
+        Create new
+      </a>
+    </h1>
+    {% if topic_list %}
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for topic in topic_list %}
+        <tr>
+          <td>{{ topic.name }}</td>
+          <td><a href="{% url 'news:topic-update' pk=topic.id %}">Update</a></td>
+          <td><a href="{% url 'news:topic-delete' pk=topic.id %}">Delete</a></td>
+        </tr>
+      {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Now we don't have topic</p>
+    {% endif %}
+  </div>
 {% endblock %}

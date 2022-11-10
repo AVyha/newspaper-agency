@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <a href="{% url 'news:newspaper-update' pk=newspaper.id %}"><button type="button">Update information</button></a>
-  <a href="{% url 'news:newspaper-delete' pk=newspaper.id %}"><button type="button">Delete newspaper</button></a>
-  <p>title - {{ newspaper.title }}</p>
-  <p>content - {{ newspaper.content }}</p>
-  <p>published_date - {{ newspaper.published_date }}</p>
-  <p>topic - {{ newspaper.topic }}</p>
+<div class="content-details">
+  <h1 style="text-align: center">{{ newspaper.title }}</h1>
+  <p>{{ newspaper.content }}</p>
+  <a href="{% url 'news:newspaper-update' pk=newspaper.id %}" class="btn btn-primary float-right">Update information</a>
+  <a href="{% url 'news:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger float-right">Delete newspaper</a>
+  <br>
+  <p>Published - {{ newspaper.published_date }}</p>
+  <p>Topic - {{ newspaper.topic }}</p>
   {% if newspaper.publishers %}
     {% for publisher in newspaper.publishers.all %}
-      <p><a href="{% url 'news:redactor-detail' pk=publisher.id %}">{{ publisher.username }}</a></p>
+      <p><a href="{% url 'news:redactor-detail' pk=publisher.id %}">{{ publisher.username }} - ({{ publisher.first_name }} {{ publisher.last_name }})</a></p>
     {% endfor %}
 
   {% endif %}
-
+</div>
 {% endblock %}

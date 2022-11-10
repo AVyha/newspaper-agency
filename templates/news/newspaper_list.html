@@ -1,29 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Newspapers list</h1>
-  <a href="{% url 'news:newspaper-create' %}"><button type="button">Create new</button></a>
-  {% if newspaper_list %}
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Publish date</th>
-        <th>Topic</th>
-        <th></th>
-      </tr>
-    {% for newspaper in newspaper_list %}
-      <tr>
-        <td>{{ newspaper.title }}</td>
-        <td>{{ newspaper.content }}</td>
-        <td>{{ newspaper.published_date }}</td>
-        <td>{{ newspaper.topic }}</td>
-        <td><a href="{% url 'news:newspaper-detail' pk=newspaper.id %}">More information</a></td>
-      </tr>
-    {% endfor %}
-
-    </table>
-  {% else %}
-    <p>Whe don't have newspapers</p>
-  {% endif %}
+  <div class="content-details">
+    <h1 style="text-align: center;">
+      Newspapers list
+      <a href="{% url 'news:newspaper-create' %}" class="float-right btn btn-primary">
+        Create new
+      </a>
+    </h1>
+    {% if newspaper_list %}
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Publish date</th>
+            <th scope="col">Topic</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for newspaper in newspaper_list %}
+        <tr>
+          <td>{{ newspaper.title }}</td>
+          <td>{{ newspaper.published_date }}</td>
+          <td>{{ newspaper.topic }}</td>
+          <td><a href="{% url 'news:newspaper-detail' pk=newspaper.id %}">More information</a></td>
+        </tr>
+      {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Whe don't have newspapers</p>
+    {% endif %}
+  </div>
 {% endblock %}
