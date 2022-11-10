@@ -28,7 +28,8 @@ class RedactorCreateForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             "first_name",
             "last_name",
-            "years_of_experience"
+            "years_of_experience",
+            "workplace"
         )
 
 
