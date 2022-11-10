@@ -33,6 +33,9 @@ class Newspaper(models.Model):
         related_name="newspapers"
     )
 
+    class Meta:
+        ordering = ["published_date"]
+
     def __str__(self):
         return self.title
 
@@ -42,3 +45,6 @@ class Redactor(AbstractUser):
         null=True,
         blank=True
     )
+
+    class Meta:
+        ordering = ["years_of_experience"]
