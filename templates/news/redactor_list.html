@@ -6,10 +6,10 @@
     <h1 style="text-align: center;">
       Redactors list
     </h1>
-{#    <form action="" method="get" class="form-inline">#}
-{#      {{ search_form|crispy }}#}
-{#      <input type="submit" value="search" class="btn-primary">#}
-{#    </form>#}
+    <form action="" method="get" class="form-inline">
+      {{ search_form|crispy }}
+      <input type="submit" value="search" class="btn-primary">
+    </form>
     {% if redactor_list %}
       <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -25,7 +25,7 @@
         <tbody>
           {% for redactor in redactor_list %}
             <tr>
-              <td>{{ redactor.username }}</td>
+              <td>{{ redactor.username }} {% if user == redactor %} (Me){% endif %}</td>
               <td>{{ redactor.first_name }}</td>
               <td>{{ redactor.last_name }}</td>
               <td>{{ redactor.years_of_experience }}</td>
