@@ -13,8 +13,9 @@
   <p>Published - {{ newspaper.published_date }}</p>
   <p>Topic - {{ newspaper.topic }}</p>
   {% if newspaper.publishers %}
+    <p>Redactors:</p>
     {% for publisher in newspaper.publishers.all %}
-      <p><a href="{% url 'news:redactor-detail' pk=publisher.id %}">{{ publisher.username }} - ({{ publisher.first_name }} {{ publisher.last_name }})</a></p>
+      <li><a href="{% url 'news:redactor-detail' pk=publisher.id %}">{{ publisher.username }} - ({{ publisher.first_name }} {{ publisher.last_name }})</a></li>
     {% endfor %}
 
   {% endif %}
