@@ -1,4 +1,6 @@
+{% load static %}
 <div class="topnav">
+  <img src="{% static 'favicon.png' %}" alt="" style="height: 25px; width: 25px" class="float-left">
   <a href="{% url 'news:index' %}" class="nav-element">Home</a>
   <a href="{% url 'news:topic-list' %}" class="nav-element">Topics</a>
   <a href="{% url 'news:redactor-list' %}" class="nav-element">Redactors</a>
