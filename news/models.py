@@ -52,4 +52,4 @@ class Redactor(AbstractUser):
     )
 
     class Meta:
-        ordering = ["years_of_experience"]
+        ordering = ["-years_of_experience"]
