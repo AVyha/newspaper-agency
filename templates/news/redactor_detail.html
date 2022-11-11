@@ -2,8 +2,11 @@
 
 {% block content %}
   <div class="content-details">
+  {% if user.id == redactor.id or user.is_staff %}
     <a href="{% url 'news:redactor-update' pk=redactor.id %}" class="btn btn-primary float-right">Update information</a>
     <a href="{% url 'news:redactor-delete' pk=redactor.id %}" class="btn btn-danger float-right">Delete user</a>
+  {% endif %}
+
     <p>username - {{ redactor.username }}</p>
     <p>first name - {{ redactor.first_name }}</p>
     <p>last name - {{ redactor.last_name }}</p>

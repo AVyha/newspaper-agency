@@ -4,8 +4,11 @@
 <div class="content-details">
   <h1 style="text-align: center">{{ newspaper.title }}</h1>
   <p>{{ newspaper.content }}</p>
-  <a href="{% url 'news:newspaper-update' pk=newspaper.id %}" class="btn btn-primary float-right">Update information</a>
-  <a href="{% url 'news:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger float-right">Delete newspaper</a>
+  {% if user in newspaper.publishers.all or user.is_staff %}
+    <a href="{% url 'news:newspaper-update' pk=newspaper.id %}" class="btn btn-primary float-right">Update information</a>
+    <a href="{% url 'news:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger float-right">Delete newspaper</a>
+  {% endif %}
+
   <br>
   <p>Published - {{ newspaper.published_date }}</p>
   <p>Topic - {{ newspaper.topic }}</p>
