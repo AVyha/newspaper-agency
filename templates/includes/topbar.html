@@ -9,8 +9,8 @@
     <a href="{% url 'news:redactor-detail' pk=user.id %}" class="nav-element">My profile</a>
     <a href="{% url 'logout' %}" class="nav-element">Logout</a>
   {% else %}
-     <a href="{% url 'news:redactor-create' %}" class="nav-element">sign up</a>
-    <a href="{% url 'login' %}" class="nav-element">log in</a>
+     <a href="{% url 'news:redactor-create' %}" class="nav-element">Sign up</a>
+    <a href="{% url 'login' %}" class="nav-element">Log in</a>
   {% endif %} 
 
 </div>
