@@ -29,7 +29,7 @@
           <td>{{ newspaper.title }}</td>
           <td>{{ newspaper.published_date }}</td>
           <td>{{ newspaper.topic }}</td>
-          <td><a href="{% url 'news:newspaper-detail' pk=newspaper.id %}">More information</a></td>
+          <td><a href="{% url 'news:newspaper-detail' pk=newspaper.id %}">Read newspaper</a></td>
         </tr>
       {% endfor %}
         </tbody>
