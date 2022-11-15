@@ -6,7 +6,7 @@ from django.views import generic
 from news.forms import (
     NewspaperSearchForm,
     TopicSearchForm,
-    RedactorCreateForm,
+    RedactorForm,
     RedactorSearchForm,
 )
 from news.models import Topic, Redactor, Newspaper
@@ -14,9 +14,9 @@ from news.models import Topic, Redactor, Newspaper
 
 def index(request):
     context = {
-        "num_topics": Topic.objects.all().count(),
-        "num_redactors": Redactor.objects.all().count(),
-        "num_newspaper": Newspaper.objects.all().count(),
+        "num_topics": Topic.objects.count(),
+        "num_redactors": Redactor.objects.count(),
+        "num_newspaper": Newspaper.objects.count(),
     }
     return render(request, "news/index.html", context)
 
@@ -95,13 +95,13 @@ class RedactorListView(generic.ListView):
 class RedactorCreateView(generic.CreateView):
     model = Redactor
     success_url = reverse_lazy("news:index")
-    form_class = RedactorCreateForm
+    form_class = RedactorForm
 
 
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
     success_url = reverse_lazy("news:redactor-list")
-    form_class = RedactorCreateForm
+    form_class = RedactorForm
 
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):

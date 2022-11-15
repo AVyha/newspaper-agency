@@ -22,7 +22,7 @@ class TopicSearchForm(forms.Form):
     )
 
 
-class RedactorCreateForm(UserCreationForm):
+class RedactorForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = Redactor
         fields = UserCreationForm.Meta.fields + (
