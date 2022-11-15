@@ -1,5 +1,3 @@
-[//]: # (![Logo]&#40;https://i0.wp.com/alcts.ala.org/news/wp-content/uploads/2018/05/alcts-news-favicon.png =250x250&#41;)
-
 # Newspaper project
 
 
