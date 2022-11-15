@@ -3,7 +3,12 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from news.forms import NewspaperSearchForm, TopicSearchForm, RedactorCreateForm, RedactorSearchForm
+from news.forms import (
+    NewspaperSearchForm,
+    TopicSearchForm,
+    RedactorCreateForm,
+    RedactorSearchForm,
+)
 from news.models import Topic, Redactor, Newspaper
 
 
@@ -11,7 +16,7 @@ def index(request):
     context = {
         "num_topics": Topic.objects.all().count(),
         "num_redactors": Redactor.objects.all().count(),
-        "num_newspaper": Newspaper.objects.all().count()
+        "num_newspaper": Newspaper.objects.all().count(),
     }
     return render(request, "news/index.html", context)
 
@@ -27,11 +32,7 @@ class TopicListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = TopicSearchForm(
-            initial={
-                "title": title
-            }
-        )
+        context["search_form"] = TopicSearchForm(initial={"title": title})
 
         return context
 
@@ -44,7 +45,7 @@ class TopicListView(generic.ListView):
         return self.queryset
 
 
-class TopicCreateView(LoginRequiredMixin,generic.CreateView):
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
     model = Topic
     fields = "__all__"
     success_url = reverse_lazy("news:topic-list")
@@ -77,9 +78,7 @@ class RedactorListView(generic.ListView):
         username = self.request.GET.get("username", "")
 
         context["search_form"] = RedactorSearchForm(
-            initial={
-                "username": username
-            }
+            initial={"username": username}
         )
 
         return context
@@ -125,11 +124,7 @@ class NewspapersListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = NewspaperSearchForm(
-            initial={
-                "title": title
-            }
-        )
+        context["search_form"] = NewspaperSearchForm(initial={"title": title})
 
         return context
 
