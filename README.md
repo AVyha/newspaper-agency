@@ -10,8 +10,8 @@ Django project for watch interested news on different topics
 [Newspaper project](https://newspapers.onrender.com/)
 ```
 Superuser:
-login: Test_user
-password: 12345Testuser6789
+login: admin
+password: a995339a
 ```
 
 
