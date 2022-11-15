@@ -13,15 +13,5 @@
     <li><strong>Newspapers:</strong> {{ num_newspaper }}</li>
   </ul>
 
-    {% if not user.is_staff %}
-    <br><br><br><br><br>
-    <div style="background-color: chocolate; text-align: center; padding: 10px; border-radius: 15px">
-      <h3>If you want to see all available functional you can log in as admin</h3>
-        <ul><strong>username - test_superuser</strong></ul>
-        <ul><strong>password - 1234Testuser5678</strong></ul>
-    </div>
-    {% endif %}
-
-
   </div>
 {% endblock %}
