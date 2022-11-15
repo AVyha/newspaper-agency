@@ -1,5 +1,3 @@
-![Logo](https://i0.wp.com/alcts.ala.org/news/wp-content/uploads/2018/05/alcts-news-favicon.png )
-
 # Newspaper project
 
 
@@ -9,6 +7,11 @@ Django project for watch interested news on different topics
 
 [Newspaper project](https://newspapers.onrender.com/)
 
+```
+Superuser:
+login: Test_user
+password: 12345Testuser6789
+```
 
 
 ## Installation
