@@ -1,11 +1,36 @@
 from django.urls import path
 
-from news.views import *
+from news.views import (
+    index,
+    TopicCreateView,
+    TopicListView,
+    TopicUpdateView,
+    TopicDeleteView,
+    TopicDetailView,
+    RedactorListView,
+    RedactorCreateView,
+    RedactorUpdateView,
+    RedactorDeleteView,
+    RedactorDetailView,
+    NewspapersListView,
+    NewspapersCreateView,
+    NewspaperUpdateView,
+    NewspaperDetailView,
+    NewspaperDeleteView,
+)
 
 urlpatterns = [
     path("", index, name="index"),
-    path("topics/", TopicListView.as_view(), name="topic-list"),
-    path("topic/create/", TopicCreateView.as_view(), name="topic-create"),
+    path(
+        "topics/",
+        TopicListView.as_view(),
+        name="topic-list"
+    ),
+    path(
+        "topic/create/",
+        TopicCreateView.as_view(),
+        name="topic-create"
+    ),
     path(
         "topic/update/<int:pk>/",
         TopicUpdateView.as_view(),
@@ -21,7 +46,11 @@ urlpatterns = [
         TopicDetailView.as_view(),
         name="topic-detail",
     ),
-    path("redactors/", RedactorListView.as_view(), name="redactor-list"),
+    path(
+        "redactors/",
+        RedactorListView.as_view(),
+        name="redactor-list"
+    ),
     path(
         "redactor/create/",
         RedactorCreateView.as_view(),
@@ -42,7 +71,11 @@ urlpatterns = [
         RedactorDetailView.as_view(),
         name="redactor-detail",
     ),
-    path("newspapers/", NewspapersListView.as_view(), name="newspaper-list"),
+    path(
+        "newspapers/",
+        NewspapersListView.as_view(),
+        name="newspaper-list"
+    ),
     path(
         "newspaper/create/",
         NewspapersCreateView.as_view(),

@@ -23,8 +23,12 @@ def setup_for_tests():
         username="Test_user2", password="test1234"
     )
 
-    newspaper1 = Newspaper.objects.create(title="Test1", content="empty", topic=topic1)
-    newspaper2 = Newspaper.objects.create(title="Test2", content="empty", topic=topic2)
+    newspaper1 = Newspaper.objects.create(
+        title="Test1", content="empty", topic=topic1
+    )
+    newspaper2 = Newspaper.objects.create(
+        title="Test2", content="empty", topic=topic2
+    )
 
     newspaper1.publishers.add(redactor1)
     newspaper1.save()
@@ -64,19 +68,16 @@ class TopicTests(TestCase):
     def setUp(self) -> None:
         setup_for_tests()
         self.user = get_user_model().objects.create_user(
-            username="Test_user",
-            password="test12345"
+            username="Test_user", password="test12345"
         )
         self.client.force_login(self.user)
 
     def test_topic_update(self):
-        topic = Topic.objects.create(
-            name="TestName1"
-        )
+        topic = Topic.objects.create(name="TestName1")
 
         self.client.post(
             reverse("news:topic-update", args=[topic.id]),
-            data={"name": "TestName2"}
+            data={"name": "TestName2"},
         )
 
         topic.refresh_from_db()
@@ -84,22 +85,15 @@ class TopicTests(TestCase):
         self.assertEqual(topic.name, "TestName2")
 
     def test_topic_search_filter(self):
-        response = self.client.get(
-            TOPIC_PAGE_URL + "?title=Test1"
-        )
+        response = self.client.get(TOPIC_PAGE_URL + "?title=Test1")
 
         self.assertEqual(
             list(response.context["topic_list"]),
-            list(Topic.objects.filter(name__icontains="Test1"))
+            list(Topic.objects.filter(name__icontains="Test1")),
         )
 
     def test_topic_create(self):
-        self.client.post(
-            reverse("news:topic-create"),
-            {
-                "name": "test_name23"
-            }
-        )
+        self.client.post(reverse("news:topic-create"), {"name": "test_name23"})
 
         self.assertEqual(Topic.objects.count(), 3)
         self.assertEqual(Topic.objects.filter(name="test_name23").count(), 1)
@@ -109,8 +103,7 @@ class NewspaperTests(TestCase):
     def setUp(self) -> None:
         setup_for_tests()
         self.user = get_user_model().objects.create_user(
-            username="Test_user",
-            password="test12345"
+            username="Test_user", password="test12345"
         )
         self.client.force_login(self.user)
 
@@ -120,28 +113,23 @@ class NewspaperTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["newspaper_list"]),
-            list(Newspaper.objects.all())
+            list(Newspaper.objects.all()),
         )
 
     def test_newspaper_detail_page(self):
-        response = self.client.get(
-            reverse("news:newspaper-detail", args=[1])
-        )
+        response = self.client.get(reverse("news:newspaper-detail", args=[1]))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.context_data["newspaper"],
-            Newspaper.objects.get(id=1)
+            response.context_data["newspaper"], Newspaper.objects.get(id=1)
         )
 
     def test_newspaper_search_filter(self):
-        response = self.client.get(
-            NEWSPAPER_LIST_URL + "?title=Test1"
-        )
+        response = self.client.get(NEWSPAPER_LIST_URL + "?title=Test1")
 
         self.assertEqual(
             list(response.context["newspaper_list"]),
-            list(Newspaper.objects.filter(title__icontains="Test1"))
+            list(Newspaper.objects.filter(title__icontains="Test1")),
         )
 
 
@@ -149,8 +137,7 @@ class RedactorTests(TestCase):
     def setUp(self) -> None:
         setup_for_tests()
         self.user = get_user_model().objects.create_user(
-            username="Test_user",
-            password="test12345"
+            username="Test_user", password="test12345"
         )
         self.client.force_login(self.user)
 
@@ -160,7 +147,7 @@ class RedactorTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["redactor_list"]),
-            list(get_user_model().objects.all())
+            list(get_user_model().objects.all()),
         )
 
     def test_redactor_detail_page(self):
@@ -171,7 +158,7 @@ class RedactorTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             response.context_data["redactor"],
-            get_user_model().objects.get(id=self.user.id)
+            get_user_model().objects.get(id=self.user.id),
         )
 
     def test_redactor_create(self):
@@ -180,30 +167,20 @@ class RedactorTests(TestCase):
             "password1": "testpassword",
             "password2": "testpassword",
             "first_name": "Test_name",
-            "last_name": "Test_surname"
+            "last_name": "Test_surname",
         }
 
-        self.client.post(
-            reverse("news:redactor-create"),
-            payload
-        )
+        self.client.post(reverse("news:redactor-create"), payload)
         user = get_object_or_404(get_user_model(), username="Test_user123")
 
         self.assertEqual(payload["first_name"], user.first_name)
         self.assertEqual(payload["last_name"], user.last_name)
 
     def test_redactor_search_filter(self):
-        response = self.client.get(
-            REDACTOR_LIST_URL + "?username=user1"
-        )
+        response = self.client.get(REDACTOR_LIST_URL + "?username=user1")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context_data["redactor_list"]),
-            list(get_user_model().objects.filter(username__icontains="user1"))
+            list(get_user_model().objects.filter(username__icontains="user1")),
         )
-
-
-
-
-

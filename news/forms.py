@@ -23,6 +23,9 @@ class TopicSearchForm(forms.Form):
 
 
 class RedactorForm(UserCreationForm):
+    first_name = forms.CharField(max_length=50, required=True)
+    last_name = forms.CharField(max_length=50, required=True)
+
     class Meta(UserCreationForm):
         model = Redactor
         fields = UserCreationForm.Meta.fields + (
