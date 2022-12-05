@@ -32,7 +32,11 @@ class TopicListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = TopicSearchForm(initial={"title": title})
+        context["search_form"] = TopicSearchForm(
+            initial={
+                "title": title
+            }
+        )
 
         return context
 
@@ -78,7 +82,9 @@ class RedactorListView(generic.ListView):
         username = self.request.GET.get("username", "")
 
         context["search_form"] = RedactorSearchForm(
-            initial={"username": username}
+            initial={
+                "username": username
+            }
         )
 
         return context
@@ -124,7 +130,11 @@ class NewspapersListView(generic.ListView):
 
         title = self.request.GET.get("title", "")
 
-        context["search_form"] = NewspaperSearchForm(initial={"title": title})
+        context["search_form"] = NewspaperSearchForm(
+            initial={
+                "title": title
+            }
+        )
 
         return context
 
