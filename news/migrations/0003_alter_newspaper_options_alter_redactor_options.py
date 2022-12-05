@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('news', '0002_alter_redactor_years_of_experience'),
+        ("news", "0002_alter_redactor_years_of_experience"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='newspaper',
-            options={'ordering': ['published_date']},
+            name="newspaper",
+            options={"ordering": ["published_date"]},
         ),
         migrations.AlterModelOptions(
-            name='redactor',
-            options={'ordering': ['years_of_experience']},
+            name="redactor",
+            options={"ordering": ["years_of_experience"]},
         ),
     ]

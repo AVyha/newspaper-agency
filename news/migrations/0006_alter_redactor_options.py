@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('news', '0005_redactor_workplace'),
+        ("news", "0005_redactor_workplace"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='redactor',
-            options={'ordering': ['-years_of_experience']},
+            name="redactor",
+            options={"ordering": ["-years_of_experience"]},
         ),
     ]
